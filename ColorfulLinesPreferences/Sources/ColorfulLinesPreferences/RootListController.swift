@@ -25,6 +25,7 @@ class RootListController: IOListController {
         headerUIView.bounds = .init(x: 0, y: -25, width: 0, height: 100)
         if let tableView = value(forKey: "_table") as? UITableView {
             tableView.tableHeaderView = headerUIView
+            tableView.tableHeaderView?.backgroundColor = .clear
         }
     }
     
