@@ -1,5 +1,4 @@
-import Preferences
-import UIKit
+import Foundation
 
 class ScrollbarListController: IOListController {
 

@@ -1,8 +1,8 @@
 Package: com.eamontracey.colorfullines
 Name: ColorfulLines
-Version: 1.0
+Version: 1.1
 Architecture: iphoneos-arm
-Description: Colorize the cursor and scrollbar
+Description: Customize the cursor, scrollbar, and text selection views
 Maintainer: Eamon Tracey
 Author: Eamon Tracey
 Section: Tweaks

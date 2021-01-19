@@ -28,7 +28,7 @@ let swiftFlags: [String] = libFlags + [
 
 let package = Package(
     name: "ColorfulLines",
-    platforms: [.iOS("13.0")],
+    platforms: [.iOS(.v13)],
     products: [
         .library(
             name: "ColorfulLines",

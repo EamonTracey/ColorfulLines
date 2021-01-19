@@ -14,12 +14,18 @@ func loadPreferences(_ center: CFNotificationCenter?, _ sender: UnsafeMutableRaw
         CL.scrollColorFromIcon ?= prefs["scrollColorFromIcon"]
         CL.scrollColor ?= UIColor(hexString: prefs["scrollColor"] as? String)
         CL.scrollHidden ?= prefs["scrollHidden"]
-        CL.caretColorEnabled ?= prefs["caretColorEnabled"]
-        CL.caretColorFromIcon ?= prefs["caretColorFromIcon"]
-        CL.caretColor ?= UIColor(hexString: prefs["caretColor"] as? String)
-        CL.caretHidden ?= prefs["caretHidden"]
-        CL.floatingCaretColorEnabled ?= prefs["floatingCaretColorEnabled"]
-        CL.floatingCaretColorFromIcon ?= prefs["floatingCaretColorFromIcon"]
-        CL.floatingCaretColor ?= UIColor(hexString: prefs["floatingCaretColor"] as? String)
+        CL.cursorColorEnabled ?= prefs["cursorColorEnabled"]
+        CL.cursorColorFromIcon ?= prefs["cursorColorFromIcon"]
+        CL.cursorColor ?= UIColor(hexString: prefs["cursorColor"] as? String)
+        CL.cursorHidden ?= prefs["cursorHidden"]
+        CL.floatingCursorColorEnabled ?= prefs["floatingCursorColorEnabled"]
+        CL.floatingCursorColorFromIcon ?= prefs["floatingCursorColorFromIcon"]
+        CL.floatingCursorColor ?= UIColor(hexString: prefs["floatingCursorColor"] as? String)
+        CL.selectionBarColorEnabled ?= prefs["selectionBarColorEnabled"]
+        CL.selectionBarColorFromIcon ?= prefs["selectionBarColorFromIcon"]
+        CL.selectionBarColor ?= UIColor(hexString: prefs["selectionBarColor"] as? String)
+        CL.highlightColorEnabled ?= prefs["highlightColorEnabled"]
+        CL.highlightColorFromIcon ?= prefs["highlightColorFromIcon"]
+        CL.highlightColor ?= UIColor(hexString: prefs["highlightColor"] as? String)
     }
 }

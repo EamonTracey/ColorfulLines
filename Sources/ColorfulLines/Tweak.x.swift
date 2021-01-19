@@ -13,13 +13,19 @@ struct ColorfulLines: Tweak {
     static var scrollColorFromIcon: Bool = true
     static var scrollColor: UIColor = .init(white: 1.0, alpha: 0.5)
     static var scrollHidden: Bool = false
-    static var caretColorEnabled: Bool = true
-    static var caretColorFromIcon: Bool = true
-    static var caretColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
-    static var caretHidden: Bool = false
-    static var floatingCaretColorEnabled: Bool = true
-    static var floatingCaretColorFromIcon: Bool = true
-    static var floatingCaretColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
+    static var cursorColorEnabled: Bool = true
+    static var cursorColorFromIcon: Bool = true
+    static var cursorColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
+    static var cursorHidden: Bool = false
+    static var floatingCursorColorEnabled: Bool = true
+    static var floatingCursorColorFromIcon: Bool = true
+    static var floatingCursorColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
+    static var selectionBarColorEnabled: Bool = true
+    static var selectionBarColorFromIcon: Bool = true
+    static var selectionBarColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
+    static var highlightColorEnabled: Bool = true
+    static var highlightColorFromIcon: Bool = true
+    static var highlightColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 0.1)
     
     // Globals
     static var iconColor = Bundle.main.icon?.averageColor ?? .white
@@ -54,15 +60,29 @@ class UITextSelectionViewHook: ClassHook<UIView> {
     static let targetName = "UITextSelectionView"
 
     func visible() -> Bool {
-        return CL.enabled && CL.caretHidden ? false : orig.visible()
+        return CL.enabled && CL.cursorHidden ? false : orig.visible()
     }
 
     func caretViewColor() -> UIColor {
-        return CL.enabled && CL.caretColorEnabled ? CL.caretColorFromIcon ? CL.iconColor : CL.caretColor : orig.caretViewColor()
+        return CL.enabled && CL.cursorColorEnabled ? CL.cursorColorFromIcon ? CL.iconColor : CL.cursorColor : orig.caretViewColor()
     }
 
     func floatingCaretViewColor() -> UIColor {
-        return CL.enabled && CL.floatingCaretColorEnabled ? CL.floatingCaretColorFromIcon ? CL.iconColor : CL.floatingCaretColor : orig.floatingCaretViewColor()
+        return CL.enabled && CL.floatingCursorColorEnabled ? CL.floatingCursorColorFromIcon ? CL.iconColor : CL.floatingCursorColor : orig.floatingCaretViewColor()
     }
 
+}
+
+class UITextInputTraitsHook: ClassHook<NSObject> {
+    
+    static let targetName = "UITextInputTraits"
+    
+    func selectionBarColor() -> UIColor {
+        return CL.enabled && CL.selectionBarColorEnabled ? CL.selectionBarColorFromIcon ? CL.iconColor : CL.selectionBarColor : orig.selectionBarColor()
+    }
+    
+    func selectionHighlightColor() -> UIColor {
+        return CL.enabled && CL.highlightColorEnabled ? CL.highlightColorFromIcon ? CL.iconColor.withAlphaComponent(0.1) : CL.highlightColor : orig.selectionHighlightColor()
+    }
+    
 }

@@ -8,6 +8,8 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+            <key>label</key>
+            <string>Enable/Disable</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -16,8 +18,6 @@
 			<true/>
 			<key>key</key>
 			<string>enabled</string>
-            <key>icon</key>
-            <string>icon.png</string>
 			<key>label</key>
 			<string>Enable</string>
 		</dict>
@@ -25,6 +25,8 @@
         <dict>
             <key>cell</key>
             <string>PSGroupCell</string>
+            <key>label</key>
+            <string>Preferences</string>
         </dict>
         <dict>
             <key>cell</key>
@@ -41,6 +43,14 @@
             <string>ColorfulLinesPreferences.CursorListController</string>
             <key>label</key>
             <string>Cursor</string>
+        </dict>
+        <dict>
+            <key>cell</key>
+            <string>PSLinkCell</string>
+            <key>detail</key>
+            <string>ColorfulLinesPreferences.TextSelectionListController</string>
+            <key>label</key>
+            <string>Text Selection</string>
         </dict>
         
         <dict>
