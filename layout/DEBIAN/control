@@ -1,0 +1,9 @@
+Package: com.eamontracey.colorfullines
+Name: ColorfulLines
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Colorize the cursor and scrollbar
+Maintainer: Eamon Tracey
+Author: Eamon Tracey
+Section: Tweaks
+Depends: ${ORION}, preferenceloader, com.spark.libsparkcolourpicker, firmware (>= 13.0)
