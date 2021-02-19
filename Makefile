@@ -12,7 +12,7 @@ TWEAK_NAME = ColorfulLines
 ColorfulLines_FILES = $(shell find Sources/ColorfulLines -name "*.swift") $(shell find Sources/ColorfulLinesC -name "*.m")
 ColorfulLines_SWIFTFLAGS = -ISources/ColorfulLinesC/include
 ColorfulLines_CFLAGS = -fobjc-arc
-ColorfulLines_LIBRARIES = sparkcolourpicker
+ColorfulLines_FRAMEWORKS = NomaePreferences
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += ColorfulLinesPreferences

@@ -1,40 +1,33 @@
 import UIKit
 import Orion
+import NomaePreferences
 
 typealias CL = ColorfulLines
 
 struct ColorfulLines: Tweak {
     
-    static var prefs: NSDictionary? { NSDictionary(contentsOfFile: "/User/Library/Preferences/com.eamontracey.colorfullinespreferences.plist") }
-    
     // Preferences
-    static var enabled: Bool = true
-    static var scrollColorEnabled: Bool = true
-    static var scrollColorFromIcon: Bool = true
-    static var scrollColor: UIColor = .init(white: 1.0, alpha: 0.5)
-    static var scrollHidden: Bool = false
-    static var cursorColorEnabled: Bool = true
-    static var cursorColorFromIcon: Bool = true
-    static var cursorColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
-    static var cursorHidden: Bool = false
-    static var floatingCursorColorEnabled: Bool = true
-    static var floatingCursorColorFromIcon: Bool = true
-    static var floatingCursorColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
-    static var selectionBarColorEnabled: Bool = true
-    static var selectionBarColorFromIcon: Bool = true
-    static var selectionBarColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 1.0)
-    static var highlightColorEnabled: Bool = true
-    static var highlightColorFromIcon: Bool = true
-    static var highlightColor: UIColor = .init(red: 9.0, green: 132.0, blue: 255.0, alpha: 0.1)
+    @Preference("enabled", store: .colorfulLines) static var enabled = true
+    @Preference("scrollColorEnabled", store: .colorfulLines) static var scrollColorEnabled = true
+    @Preference("scrollColorFromIcon", store: .colorfulLines) static var scrollColorFromIcon = true
+    @Preference("scrollColor", store: .colorfulLines) static var scrollColor = "#ffffff:0.5"
+    @Preference("scrollHidden", store: .colorfulLines) static var scrollHidden = false
+    @Preference("cursorColorEnabled", store: .colorfulLines) static var cursorColorEnabled = true
+    @Preference("cursorColorFromIcon", store: .colorfulLines) static var cursorColorFromIcon = true
+    @Preference("cursorColor", store: .colorfulLines) static var cursorColor = "#0984ff:1.0"
+    @Preference("cursorHidden", store: .colorfulLines) static var cursorHidden = false
+    @Preference("floatingCursorColorEnabled", store: .colorfulLines) static var floatingCursorColorEnabled = true
+    @Preference("floatingCursorColorFromIcon", store: .colorfulLines) static var floatingCursorColorFromIcon = true
+    @Preference("floatingCursorColor", store: .colorfulLines) static var floatingCursorColor = "#0984ff:1.0"
+    @Preference("selectionBarColorEnabled", store: .colorfulLines) static var selectionBarColorEnabled = true
+    @Preference("selectionBarColorFromIcon", store: .colorfulLines) static var selectionBarColorFromIcon = true
+    @Preference("selectionBarColor", store: .colorfulLines) static var selectionBarColor = "#0984ff:1.0"
+    @Preference("highlightColorEnabled", store: .colorfulLines) static var highlightColorEnabled = true
+    @Preference("highlightColorFromIcon", store: .colorfulLines) static var highlightColorFromIcon = true
+    @Preference("highlightColor", store: .colorfulLines) static var highlightColor = "#0984ff:0.1"
     
     // Globals
     static var iconColor = Bundle.main.icon?.averageColor ?? .white
-    
-    // Initializer
-    init() {
-        loadPreferences(nil, nil, nil, nil, nil)
-        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), nil, loadPreferences, "com.eamontracey.colorfullinespreferences/update" as CFString, nil, .coalesce)
-    }
 
 }
 
@@ -50,7 +43,14 @@ class UIScrollViewScrollIndicatorHook: ClassHook<UIView> {
     }
 
     func _colorForStyle(_ style: UInt64) -> UIColor {
-        return CL.enabled && CL.scrollColorEnabled ? CL.scrollColorFromIcon ? CL.iconColor.withAlphaComponent(0.5) : CL.scrollColor : orig._colorForStyle(style)
+        if CL.enabled && CL.scrollColorEnabled {
+            if CL.scrollColorFromIcon {
+                return CL.iconColor.withAlphaComponent(0.5)
+            } else if let scrollColor = UIColor(hexString: CL.scrollColor) {
+                return scrollColor
+            }
+        }
+        return orig._colorForStyle(style)
     }
 
 }
@@ -64,11 +64,25 @@ class UITextSelectionViewHook: ClassHook<UIView> {
     }
 
     func caretViewColor() -> UIColor {
-        return CL.enabled && CL.cursorColorEnabled ? CL.cursorColorFromIcon ? CL.iconColor : CL.cursorColor : orig.caretViewColor()
+        if CL.enabled && CL.cursorColorEnabled {
+            if CL.cursorColorFromIcon {
+                return CL.iconColor
+            } else if let cursorColor = UIColor(hexString: CL.cursorColor) {
+                return cursorColor
+            }
+        }
+        return orig.caretViewColor()
     }
 
     func floatingCaretViewColor() -> UIColor {
-        return CL.enabled && CL.floatingCursorColorEnabled ? CL.floatingCursorColorFromIcon ? CL.iconColor : CL.floatingCursorColor : orig.floatingCaretViewColor()
+        if CL.enabled && CL.floatingCursorColorEnabled {
+            if CL.floatingCursorColorFromIcon {
+                return CL.iconColor
+            } else if let floatingCursorColor = UIColor(hexString: CL.floatingCursorColor) {
+                return floatingCursorColor
+            }
+        }
+        return orig.floatingCaretViewColor()
     }
 
 }
@@ -78,11 +92,25 @@ class UITextInputTraitsHook: ClassHook<NSObject> {
     static let targetName = "UITextInputTraits"
     
     func selectionBarColor() -> UIColor {
-        return CL.enabled && CL.selectionBarColorEnabled ? CL.selectionBarColorFromIcon ? CL.iconColor : CL.selectionBarColor : orig.selectionBarColor()
+        if CL.enabled && CL.selectionBarColorEnabled {
+            if CL.selectionBarColorFromIcon {
+                return CL.iconColor
+            } else if let selectionBarColor = UIColor(hexString: CL.selectionBarColor) {
+                return selectionBarColor
+            }
+        }
+        return orig.selectionBarColor()
     }
     
     func selectionHighlightColor() -> UIColor {
-        return CL.enabled && CL.highlightColorEnabled ? CL.highlightColorFromIcon ? CL.iconColor.withAlphaComponent(0.1) : CL.highlightColor : orig.selectionHighlightColor()
+        if CL.enabled && CL.highlightColorEnabled {
+            if CL.highlightColorFromIcon {
+                return CL.iconColor.withAlphaComponent(0.1)
+            } else if let highlightColor = UIColor(hexString: CL.highlightColor) {
+                return highlightColor
+            }
+        }
+        return orig.selectionHighlightColor()
     }
     
 }

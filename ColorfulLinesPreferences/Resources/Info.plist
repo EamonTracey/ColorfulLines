@@ -19,6 +19,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>ColorfulLinesPreferences.RootListController</string>
+	<string>ColorfulLinesPreferences.PreferencesController</string>
 </dict>
 </plist>

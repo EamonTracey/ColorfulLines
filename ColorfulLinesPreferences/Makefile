@@ -10,5 +10,6 @@ BUNDLE_NAME = ColorfulLinesPreferences
 ColorfulLinesPreferences_FILES = $(shell find Sources/ColorfulLinesPreferences -name "*.swift")
 ColorfulLinesPreferences_INSTALL_PATH = /Library/PreferenceBundles
 ColorfulLinesPreferences_CFLAGS = -fobjc-arc
+#ColorfulLinesPreferences_FRAMEWORKS = NomaePreferences
 
 include $(THEOS_MAKE_PATH)/bundle.mk

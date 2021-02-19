@@ -3,27 +3,13 @@
 import PackageDescription
 import Foundation
 
-guard let theosPath = ProcessInfo.processInfo.environment["THEOS"],
-      let projectDir = ProcessInfo.processInfo.environment["PWD"]
-else {
-    fatalError("""
-    THEOS env var not set. If you're using Xcode, open this package with `make dev`
-    """)
-}
+let theosPath = ProcessInfo.processInfo.environment["THEOS"]!
 
 let libFlags: [String] = [
-    "-F\(theosPath)/vendor/lib", "-F\(theosPath)/lib",
-    "-I\(theosPath)/vendor/include", "-I\(theosPath)/include"
-]
-
-let cFlags: [String] = libFlags + [
-    "-Wno-unused-command-line-argument", "-Qunused-arguments",
-]
-
-let cxxFlags: [String] = [
-]
-
-let swiftFlags: [String] = libFlags + [
+    "-F\(theosPath)/vendor/lib",
+    "-F\(theosPath)/lib",
+    "-I\(theosPath)/vendor/include",
+    "-I\(theosPath)/include"
 ]
 
 let package = Package(
@@ -38,7 +24,7 @@ let package = Package(
     targets: [
         .target(
             name: "ColorfulLinesPreferences",
-            swiftSettings: [.unsafeFlags(swiftFlags)]
+            swiftSettings: [.unsafeFlags(libFlags)]
         ),
     ]
 )

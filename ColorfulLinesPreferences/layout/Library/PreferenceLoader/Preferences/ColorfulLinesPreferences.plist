@@ -9,13 +9,13 @@
 		<key>cell</key>
 		<string>PSLinkCell</string>
 		<key>detail</key>
-		<string>ColorfulLinesPreferences.RootListController</string>
+		<string>ColorfulLinesPreferences.PreferencesController</string>
 		<key>icon</key>
 		<string>icon.png</string>
 		<key>isController</key>
 		<true/>
 		<key>label</key>
-		<string>ColorfulLines</string>
+		<string>Colorful Lines</string>
 	</dict>
 </dict>
 </plist>
