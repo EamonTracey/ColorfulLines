@@ -2,12 +2,12 @@ import SwiftUI
 import NomaePreferences
 
 struct TextSelectionPreferences: View {
-    @Preference("selectionBarColorEnabled", store: .colorfulLines) var selectionBarColorEnabled = true
-    @Preference("selectionBarColorFromIcon", store: .colorfulLines) var selectionBarColorFromIcon = true
-    @Preference("selectionBarColor", store: .colorfulLines) var selectionBarColor = "#0984ff:1.0"
-    @Preference("highlightColorEnabled", store: .colorfulLines) var highlightColorEnabled = true
-    @Preference("highlightColorFromIcon", store: .colorfulLines) var highlightColorFromIcon = true
-    @Preference("highlightColor", store: .colorfulLines) var highlightColor = "#0984ff:0.1"
+    @Preference("selectionBarColorEnabled", identifier: identifier) var selectionBarColorEnabled = true
+    @Preference("selectionBarColorFromIcon", identifier: identifier) var selectionBarColorFromIcon = true
+    @Preference("selectionBarColor", identifier: identifier) var selectionBarColor = "#0984ff:1.0"
+    @Preference("highlightColorEnabled", identifier: identifier) var highlightColorEnabled = true
+    @Preference("highlightColorFromIcon", identifier: identifier) var highlightColorFromIcon = true
+    @Preference("highlightColor", identifier: identifier) var highlightColor = "#0984ff:0.1"
     
     var body: some View {
         Form {

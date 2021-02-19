@@ -6,25 +6,27 @@ typealias CL = ColorfulLines
 
 struct ColorfulLines: Tweak {
     
+    static let identifier = "com.eamontracey.colorfullines"
+    
     // Preferences
-    @Preference("enabled", store: .colorfulLines) static var enabled = true
-    @Preference("scrollColorEnabled", store: .colorfulLines) static var scrollColorEnabled = true
-    @Preference("scrollColorFromIcon", store: .colorfulLines) static var scrollColorFromIcon = true
-    @Preference("scrollColor", store: .colorfulLines) static var scrollColor = "#ffffff:0.5"
-    @Preference("scrollHidden", store: .colorfulLines) static var scrollHidden = false
-    @Preference("cursorColorEnabled", store: .colorfulLines) static var cursorColorEnabled = true
-    @Preference("cursorColorFromIcon", store: .colorfulLines) static var cursorColorFromIcon = true
-    @Preference("cursorColor", store: .colorfulLines) static var cursorColor = "#0984ff:1.0"
-    @Preference("cursorHidden", store: .colorfulLines) static var cursorHidden = false
-    @Preference("floatingCursorColorEnabled", store: .colorfulLines) static var floatingCursorColorEnabled = true
-    @Preference("floatingCursorColorFromIcon", store: .colorfulLines) static var floatingCursorColorFromIcon = true
-    @Preference("floatingCursorColor", store: .colorfulLines) static var floatingCursorColor = "#0984ff:1.0"
-    @Preference("selectionBarColorEnabled", store: .colorfulLines) static var selectionBarColorEnabled = true
-    @Preference("selectionBarColorFromIcon", store: .colorfulLines) static var selectionBarColorFromIcon = true
-    @Preference("selectionBarColor", store: .colorfulLines) static var selectionBarColor = "#0984ff:1.0"
-    @Preference("highlightColorEnabled", store: .colorfulLines) static var highlightColorEnabled = true
-    @Preference("highlightColorFromIcon", store: .colorfulLines) static var highlightColorFromIcon = true
-    @Preference("highlightColor", store: .colorfulLines) static var highlightColor = "#0984ff:0.1"
+    @Preference("enabled", identifier: identifier) static var enabled = true
+    @Preference("scrollColorEnabled", identifier: identifier) static var scrollColorEnabled = true
+    @Preference("scrollColorFromIcon", identifier: identifier) static var scrollColorFromIcon = true
+    @Preference("scrollColor", identifier: identifier) static var scrollColor = "#ffffff:0.5"
+    @Preference("scrollHidden", identifier: identifier) static var scrollHidden = false
+    @Preference("cursorColorEnabled", identifier: identifier) static var cursorColorEnabled = true
+    @Preference("cursorColorFromIcon", identifier: identifier) static var cursorColorFromIcon = true
+    @Preference("cursorColor", identifier: identifier) static var cursorColor = "#0984ff:1.0"
+    @Preference("cursorHidden", identifier: identifier) static var cursorHidden = false
+    @Preference("floatingCursorColorEnabled", identifier: identifier) static var floatingCursorColorEnabled = true
+    @Preference("floatingCursorColorFromIcon", identifier: identifier) static var floatingCursorColorFromIcon = true
+    @Preference("floatingCursorColor", identifier: identifier) static var floatingCursorColor = "#0984ff:1.0"
+    @Preference("selectionBarColorEnabled", identifier: identifier) static var selectionBarColorEnabled = true
+    @Preference("selectionBarColorFromIcon", identifier: identifier) static var selectionBarColorFromIcon = true
+    @Preference("selectionBarColor", identifier: identifier) static var selectionBarColor = "#0984ff:1.0"
+    @Preference("highlightColorEnabled", identifier: identifier) static var highlightColorEnabled = true
+    @Preference("highlightColorFromIcon", identifier: identifier) static var highlightColorFromIcon = true
+    @Preference("highlightColor", identifier: identifier) static var highlightColor = "#0984ff:0.1"
     
     // Globals
     static var iconColor = Bundle.main.icon?.averageColor ?? .white

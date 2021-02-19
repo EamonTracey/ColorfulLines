@@ -2,10 +2,10 @@ import SwiftUI
 import NomaePreferences
 
 struct ScrollbarPreferences: View {
-    @Preference("scrollColorEnabled", store: .colorfulLines) var scrollColorEnabled = true
-    @Preference("scrollColorFromIcon", store: .colorfulLines) var scrollColorFromIcon = true
-    @Preference("scrollColor", store: .colorfulLines) var scrollColor = "#ffffff:0.5"
-    @Preference("scrollHidden", store: .colorfulLines) var scrollHidden = false
+    @Preference("scrollColorEnabled", identifier: identifier) var scrollColorEnabled = true
+    @Preference("scrollColorFromIcon", identifier: identifier) var scrollColorFromIcon = true
+    @Preference("scrollColor", identifier: identifier) var scrollColor = "#ffffff:0.5"
+    @Preference("scrollHidden", identifier: identifier) var scrollHidden = false
     
     var body: some View {
         Form {

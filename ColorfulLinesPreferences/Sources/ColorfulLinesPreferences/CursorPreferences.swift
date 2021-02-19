@@ -2,13 +2,13 @@ import SwiftUI
 import NomaePreferences
 
 struct CursorPreferences: View {
-    @Preference("cursorColorEnabled", store: .colorfulLines) var cursorColorEnabled = true
-    @Preference("cursorColorFromIcon", store: .colorfulLines) var cursorColorFromIcon = true
-    @Preference("cursorColor", store: .colorfulLines) var cursorColor = "#0984ff:1.0"
-    @Preference("cursorHidden", store: .colorfulLines) var cursorHidden = false
-    @Preference("floatingCursorColorEnabled", store: .colorfulLines) var floatingCursorColorEnabled = true
-    @Preference("floatingCursorColorFromIcon", store: .colorfulLines) var floatingCursorColorFromIcon = true
-    @Preference("floatingCursorColor", store: .colorfulLines) var floatingCursorColor = "#0984ff:1.0"
+    @Preference("cursorColorEnabled", identifier: identifier) var cursorColorEnabled = true
+    @Preference("cursorColorFromIcon", identifier: identifier) var cursorColorFromIcon = true
+    @Preference("cursorColor", identifier: identifier) var cursorColor = "#0984ff:1.0"
+    @Preference("cursorHidden", identifier: identifier) var cursorHidden = false
+    @Preference("floatingCursorColorEnabled", identifier: identifier) var floatingCursorColorEnabled = true
+    @Preference("floatingCursorColorFromIcon", identifier: identifier) var floatingCursorColorFromIcon = true
+    @Preference("floatingCursorColor", identifier: identifier) var floatingCursorColor = "#0984ff:1.0"
     
     var body: some View {
         Form {

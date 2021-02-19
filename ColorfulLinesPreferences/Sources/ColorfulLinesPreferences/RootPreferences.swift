@@ -1,12 +1,10 @@
 import SwiftUI
 import NomaePreferences
 
-extension UserDefaults {
-    static let colorfulLines = UserDefaults(suiteName: "com.eamontracey.colorfullinespreferences")
-}
+let identifier = "com.eamontracey.colorfullines"
 
 struct RootPreferences: View {
-    @Preference("enabled", store: .colorfulLines) var enabled = true
+    @Preference("enabled", identifier: identifier) var enabled = true
 
     var body: some View {
         Form {
