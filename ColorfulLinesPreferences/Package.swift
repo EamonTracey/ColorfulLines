@@ -1,9 +1,9 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 import Foundation
 
-let theosPath = ProcessInfo.processInfo.environment["THEOS"]!
+let theosPath = "/Users/eamontracey/.theos"
 
 let libFlags: [String] = [
     "-F\(theosPath)/vendor/lib",
@@ -14,7 +14,7 @@ let libFlags: [String] = [
 
 let package = Package(
     name: "ColorfulLinesPreferences",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v14)],
     products: [
         .library(
             name: "ColorfulLinesPreferences",

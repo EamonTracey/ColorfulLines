@@ -1,7 +1,6 @@
 ARCHS = arm64 arm64e
 
-TARGET := iphone:clang:13.7:13.0
-PREFIX = $(THEOS)/toolchain/Xcode.xctoolchain/usr/bin/
+TARGET := iphone:clang::14.0
 
 INSTALL_TARGET_PROCESSES = SpringBoard
 
